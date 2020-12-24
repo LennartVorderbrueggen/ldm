@@ -1,0 +1,21 @@
+enum Beverages{
+  Jaegermeister,
+  Vodka,
+  Whiskey,
+  CaptainMorgan,
+  TequilaGold,
+  Gin,
+  Rum,
+  Korn,
+  Bacardi,
+  BacardiRazz,
+  DreiUndVierziger,
+  Cola,
+  Fanta,
+  Sprite,
+  Orangensaft,
+  Energy,
+  Lemon,
+  Eistee,
+  Milch
+}

@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:ldma/responsive/enums/deviceScreenType.dart';
+import 'package:ldma/enums/deviceScreenType.dart';
 
 class SizingInformation {
   final Orientation orientation;

@@ -1,3 +1,4 @@
-const String homeRoute = "home";
-const String aboutRoute = "about";
-const String settingsRoute = "settings";
+class Routes{
+  static const String orderRoute = "order";
+  static const String settingsRoute = "settings";
+}

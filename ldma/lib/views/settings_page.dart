@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:ldma/classes/language.dart';
 import 'package:ldma/localization/language_constants.dart';
 import 'package:ldma/main.dart';
+import 'package:ldma/widgets/appBar.dart';
+import 'package:ldma/widgets/drawer.dart';
+
+import '../theme_changer.dart';
 
 class SettingsPage extends StatefulWidget {
   SettingsPage({Key key}) : super(key: key);
@@ -19,14 +23,16 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(getTranslated(context, 'settings')),
-      ),
+      appBar: LdmaAppBar(
+        title: Text(getTranslated(context, "title")),
+        appBar: AppBar(),),
+      drawer: LdmaDrawer(),
       body: Container(
-        child: Center(
+        child: Column(children: [
+        Center(
             child: DropdownButton<Language>(
           iconSize: 30,
-          hint: Text(getTranslated(context, 'change_language')),
+          hint: Text(getTranslated(context, 'changelanguage')),
           onChanged: (Language language) {
             _changeLanguage(language);
           },
@@ -48,6 +54,20 @@ class _SettingsPageState extends State<SettingsPage> {
               )
               .toList(),
         )),
+        Center(
+          child: Switch(
+            value: ThemeBuilder.of(context).darkModeEnabled,
+            onChanged: (value) {
+              setState(() {
+                ThemeBuilder.of(context).changeTheme();
+                ThemeBuilder.of(context).darkModeEnabled = value;
+              });
+            },
+            activeTrackColor: Colors.lightGreenAccent,
+            activeColor: Colors.green,
+          ),
+        ),
+        ],),
       ),
     );
   }
