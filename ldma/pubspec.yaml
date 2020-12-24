@@ -54,6 +54,33 @@ flutter:
     - lib/lang/en.json
     - lib/lang/de.json
     - lib/lang/hi.json
+    - lib/img/generell/cocktails.jpg
+    - lib/img/generell/gradient_middle.png
+    - lib/img/generell/gradient_small.png
+    - lib/img/generell/gradient.png
+    - lib/img/generell/cocktails.jpg
+    - lib/img/alk/43_bear.png
+    - lib/img/alk/bacardi_bear.png
+    - lib/img/alk/bacardi-razz_bear.png
+    - lib/img/alk/belvedere-vodka-2017_bear.png
+    - lib/img/alk/captain-morgan_bear.png
+    - lib/img/alk/gin_bear.png
+    - lib/img/alk/havana-club_bear.png
+    - lib/img/alk/jackdaniels_bear.png
+    - lib/img/alk/korn_bear.png
+    - lib/img/alk/product_page_hero_bottle.png
+    - lib/img/alk/tequila_bear.png
+    - lib/img/icons/icons8-limonade-50.png
+    - lib/img/icons/icons8-waage-50.png
+    - lib/img/icons/icons8-whiskey-64.png
+    - lib/img/mische/cola_bear.png
+    - lib/img/mische/eistee_bear.png
+    - lib/img/mische/fanta_bear.png
+    - lib/img/mische/lemon.jpg
+    - lib/img/mische/milk_bear.png
+    - lib/img/mische/OJuice_bear.png
+    - lib/img/mische/redbull.png
+    - lib/img/mische/sprite_bear.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

@@ -16,6 +16,7 @@ class ThemeBuilder extends StatefulWidget {
 
 class _ThemeBuilderState extends State<ThemeBuilder> {
   Brightness _brightness;
+  bool darkModeEnabled = false;
 
   @override
   void initState() {
@@ -26,6 +27,7 @@ class _ThemeBuilderState extends State<ThemeBuilder> {
   void changeTheme(){
     setState(() {
       _brightness = _brightness == Brightness.dark ? Brightness.light : Brightness.dark;
+      darkModeEnabled = !darkModeEnabled;
     });
   }
 

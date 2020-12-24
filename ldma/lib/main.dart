@@ -56,7 +56,7 @@ class _MyAppState extends State<MyApp> {
             builder: (context, _brightness){
               return MaterialApp(
                 debugShowCheckedModeBanner: false,
-                title: "Flutter Localization Demo",
+                title: "LDMA",
                 theme: ThemeData(
                   primarySwatch: Colors.orange,
                   brightness: _brightness,
@@ -83,7 +83,7 @@ class _MyAppState extends State<MyApp> {
                   return supportedLocales.first;
                 },
                 onGenerateRoute: CustomRouter.generatedRoute,
-                initialRoute: homeRoute,
+                initialRoute: Routes.orderRoute,
               );
             },
           );
