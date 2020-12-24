@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
     showTimePicker(context: context, initialTime: TimeOfDay.now());
   }
 
-  bool lightModeEnabled = true;
+  bool darkModeEnabled = false;
 
   @override
   Widget build(BuildContext context) {
@@ -164,11 +164,11 @@ class _HomePageState extends State<HomePage> {
           ),
           
           Switch(
-            value: lightModeEnabled,
+            value: darkModeEnabled,
             onChanged: (value) {
               setState(() {
                 ThemeBuilder.of(context).changeTheme();
-                lightModeEnabled = value;
+                darkModeEnabled = value;
               });
             },
             activeTrackColor: Colors.lightGreenAccent,

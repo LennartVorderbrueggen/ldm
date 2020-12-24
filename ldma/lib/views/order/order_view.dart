@@ -11,7 +11,7 @@ class OrderView extends StatefulWidget {
 }
 
 class _OrderViewState extends State<OrderView> {
-  bool darkModeEnabled = false;
+  
 
   @override
   Widget build(BuildContext context) {
@@ -22,18 +22,6 @@ class _OrderViewState extends State<OrderView> {
             mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(sizingInformation.toString()),
-                Switch(value: darkModeEnabled, 
-                    onChanged:(value) {
-                        print(darkModeEnabled.toString());
-                        ThemeBuilder.of(context).changeTheme();
-                        setState(() {
-                          darkModeEnabled = value;
-                          print(darkModeEnabled.toString());
-                        });
-                    },
-                    activeTrackColor: Colors.lightGreenAccent,
-                    activeColor: Colors.green,
-                  ),
               ],
          ),
         );
