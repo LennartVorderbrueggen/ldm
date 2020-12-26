@@ -60,6 +60,8 @@ flutter:
     - lib/img/generell/gradient_middle.png
     - lib/img/generell/gradient_small.png
     - lib/img/generell/gradient.png
+    - lib/img/generell/loginBackground.png
+    - lib/img/generell/CocktailIcon.png
     - lib/img/generell/cocktails.jpg
     - lib/img/alk/43_bear.png
     - lib/img/alk/bacardi_bear.png

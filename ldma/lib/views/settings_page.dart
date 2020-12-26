@@ -67,6 +67,7 @@ class _SettingsPageState extends State<SettingsPage> {
             activeColor: Colors.green,
           ),
         ),
+        // TODO: feaure: possibility to change name
         ],),
       ),
     );
