@@ -11,5 +11,7 @@
 
     "alcohol": "Alcohol",
     "softDrink":"Softdrink",
-    "ratio":"Ratio"
+    "ratio":"Ratio",
+
+    "sendOrder":"Order"
 }

@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:ldma/classes/config.dart';
 import 'package:ldma/classes/order.dart';
 import 'package:ldma/enums/beverages.dart';
 import 'package:ldma/localization/language_constants.dart';
+import 'package:ldma/responsive/sizing_information.dart';
 import 'package:ldma/router/route_constants.dart';
 import 'package:ldma/style.dart';
 import 'package:ldma/theme_changer.dart';
+import 'package:ldma/views/order/alkohol_view.dart';
+import 'package:ldma/views/order/ratio_view.dart';
+import 'package:ldma/views/order/softDrink_view.dart';
+import 'package:ldma/views/order/utils.dart';
 import 'package:ldma/widgets/appBar.dart';
 import 'package:ldma/widgets/baseWidget.dart';
 import 'package:ldma/widgets/drawer.dart';
@@ -13,24 +19,31 @@ import 'package:ldma/widgets/drawer.dart';
 class OrderView extends StatefulWidget {
   OrderView({Key key}) : super(key: key);
 
-
-
   @override
   _OrderViewState createState() => _OrderViewState();
 
 
-    static _OrderViewState of(BuildContext context)
+  static _OrderViewState of(BuildContext context)
   {
     return context.ancestorStateOfType(const TypeMatcher<_OrderViewState>());
   }
 }
 
 class _OrderViewState extends State<OrderView> {
-  Order order = new Order();
+  Future<Config> config;
+  Order order = new Order(alcohol: null, softDrink: null, ratio: 20, user: null);
+  SizingInformation sizingInformation;
+
+  @override
+  void initState() { 
+    super.initState();
+    config = fetchConfig();
+  }
 
   @override
   Widget build(BuildContext context) {
     return BaseWidget(builder: (context, sizingInformation) {
+        this.sizingInformation = sizingInformation;
         return Scaffold(
           appBar: LdmaAppBar(
             title: Text(getTranslated(context, 'title')),
@@ -46,22 +59,55 @@ class _OrderViewState extends State<OrderView> {
                           new Container(
                             //Order Page 1 generel information
                             margin: const EdgeInsets.only(top:50.0),
-                            child: Container(//child:
-                                    //AlkPage(order),
+                            child: FutureBuilder<Config>(
+                              future: config,
+                              builder: (context, snapshot) {
+                                  if (snapshot.hasData) {
+                                    //return Text(snapshot.data.numActivePumps.toString());
+                                    return AlkPage(snapshot.data.alcohol);
+                                  } else if (snapshot.hasError) {
+                                    return Text("${snapshot.error}");
+                                  }
+
+                                  // By default, show a loading spinner.
+                                  return CircularProgressIndicator();
+                                },
                             ),
                           ),
                           new Container(
                             //Order Page 1 generel information
                             margin: const EdgeInsets.only(top:50.0),
-                            child: Container(//child:
-                                      //MischePage(),
+                            child: FutureBuilder<Config>(
+                              future: config,
+                              builder: (context, snapshot) {
+                                  if (snapshot.hasData) {
+                                    //return Text(snapshot.data.numActivePumps.toString());
+                                    return MischePage(snapshot.data.softDrink);
+                                  } else if (snapshot.hasError) {
+                                    return Text("${snapshot.error}");
+                                  }
+
+                                  // By default, show a loading spinner.
+                                  return CircularProgressIndicator();
+                                },
                             ),
                           ),
                           new Container(
                             //Order Page 1 generel information
                             margin: const EdgeInsets.only(top:50.0),
-                            child: Container(//child:
-                                      //SliderPage(),
+                            child: FutureBuilder<Config>(
+                              future: config,
+                              builder: (context, snapshot) {
+                                  if (snapshot.hasData) {
+                                    //return Text(snapshot.data.numActivePumps.toString());
+                                    return SliderPage();
+                                  } else if (snapshot.hasError) {
+                                    return Text("${snapshot.error}");
+                                  }
+
+                                  // By default, show a loading spinner.
+                                  return CircularProgressIndicator();
+                                },
                             ),
                           ),
                         ],

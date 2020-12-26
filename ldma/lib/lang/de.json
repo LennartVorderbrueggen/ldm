@@ -12,5 +12,7 @@
 
     "alcohol": "Alkohol",
     "softDrink":"Mische",
-    "ratio":"Verhältnis"
+    "ratio":"Verhältnis",
+
+    "sendOrder":"Bestellen"
 }
