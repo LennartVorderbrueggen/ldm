@@ -50,7 +50,7 @@ class _OrderViewState extends State<OrderView> {
             appBar: AppBar(),
           ),
           drawer: LdmaDrawer(),
-            body: new DefaultTabController(
+          body: new DefaultTabController(
               length: 3,
               child: Builder(builder: (BuildContext context) {
                 return Scaffold(

@@ -3,10 +3,13 @@ import 'package:ldma/views/order/order_view.dart';
 import 'package:ldma/views/not_found_page.dart';
 import 'package:ldma/views/settings_page.dart';
 import 'package:ldma/router/route_constants.dart';
+import 'package:ldma/views/start/start_view.dart';
 
 class CustomRouter {
   static Route<dynamic> generatedRoute(RouteSettings settings) {
     switch (settings.name) {
+      case Routes.startRoute:
+        return MaterialPageRoute(builder: (_) => StartPage());
       case Routes.orderRoute:
         return MaterialPageRoute(builder: (_) => OrderView());
       case Routes.settingsRoute:
