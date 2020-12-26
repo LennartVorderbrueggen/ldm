@@ -1,8 +1,10 @@
+import 'package:ldma/enums/beverages.dart';
+
 class Order{
-  final String user;
-  final String alcohol;
-  final String softDrink;
-  final int ratio;
+  String user;
+  Beverages alcohol;
+  Beverages softDrink;
+  double ratio;
 
   Order({this.user, this.alcohol, this.softDrink, this.ratio});
   

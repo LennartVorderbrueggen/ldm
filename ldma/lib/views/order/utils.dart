@@ -1,4 +1,29 @@
+import 'dart:convert';
+import 'package:ldma/classes/config.dart';
 import 'package:ldma/enums/beverages.dart';
+import 'package:http/http.dart' as http;
+import 'package:flutter/material.dart';
+import '../../style.dart';
+import '../../theme_changer.dart';
+import 'order_view.dart';
+
+Future<http.Response> getResponseFromApi(String specificUrl){
+  String baseUrl = "";
+  return http.get(baseUrl + specificUrl);
+}
+
+// Future<Config> fetchConfig() async {
+//   final res = await getResponseFromApi("/config");
+//   if(res.statusCode == 200){
+//     return Config.fromJson(jsonDecode(res.body));
+//   } else{
+//     throw Exception("Failed to load Config.");
+//   }
+// }
+Future<Config> fetchConfig() async {
+    return Config.fromJson();
+}
+
 
 String imageFactory(Beverages beverage){
     String path = "";
@@ -62,4 +87,35 @@ String imageFactory(Beverages beverage){
         break;
     }
     return path;
+}
+
+List<Widget> getBeverageGrid(List<Beverages> beverages,BuildContext context, bool isAlc)
+{
+  List<Widget> list = new List<Widget>();
+  for(var i = 0; i < beverages.length; i++){
+      String selectedBeverage = isAlc ? OrderView.of(context).order.alcohol.toString() : OrderView.of(context).order.softDrink.toString();
+      list.add(
+        new ButtonTheme(
+              key: Key(beverages[i].toString()),
+              shape: selectedBeverage == beverages[i].toString() ? Border.all(color: LdmaColors.iconColorDark) : null,
+              minWidth: 25,
+              height: 10,
+              child: RaisedButton(
+                animationDuration: Duration(seconds: 2),
+                focusColor: Colors.orange,
+                color: ThemeBuilder.of(context).darkModeEnabled ? LdmaColors.beverageColorDark : LdmaColors.beverageColorLight,
+                highlightColor: LdmaColors.beverageColorDark,
+                child: Image.asset(imageFactory(beverages[i])),
+                onPressed: (){
+                  if(isAlc){
+                    OrderView.of(context).order.alcohol = beverages[i];
+                  }else{
+                    OrderView.of(context).order.softDrink = beverages[i];
+                  }              
+                  var index = DefaultTabController.of(context).index;
+                  DefaultTabController.of(context).animateTo(index+1);},
+              ),
+            ));
+  }
+  return list;
 }
